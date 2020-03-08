@@ -1,15 +1,16 @@
 clc
 % clear all
  
- i = 1;
- j = size(aa, 2) - 99;
- for k = 1:100:j
-     ax(1, i) = sum(aa(1, k:k+99)) / 100;
-     ax(2, i) = sum(aa(2, k:k+99)) / 100;
-     i = i + 1;
+ load('E:\Berkas Banin\KULIAGH\MATLAB\0505\data_filter.mat', 'aa')
+ i = 1
+ j = size(aa, 2) - 4
+ for k = 1:5:j
+     ax(1, i) = sum(aa(1, k:k+4)) / 5
+     ax(2, i) = sum(aa(2, k:k+4)) / 5
+     i = i + 1
  end
  
-plot(ax(1:100));
+plot(ax(1:100))
 
 % c=0;
 % for n=1:11263

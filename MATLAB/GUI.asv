@@ -52,7 +52,7 @@ function GUI_OpeningFcn(hObject, eventdata, handles, varargin)
 % handles    structure with handles and user data (see GUIDATA)
 % varargin   command line arguments to GUI (see VARARGIN)
 clc
-plot(0, 0)
+polar(0, 0)
 % Choose default command line output for GUI
 handles.output = hObject;
 
@@ -101,15 +101,12 @@ function pushbutton4_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton4 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
- load('E:\Berkas Banin\KULIAH\PSD\GUI-Matlab\MATLAB\0505\data_filter.mat');
  dividertxt = get(handles.edit1, 'String');
- divider = str2num(dividertxt);
- i = 1;
- j = size(aa, 2) - (divider - 1);
+ divider = str2num(dividertxt)
+ i = 1
+ j = size(aa, 2) - (divider - 1)
  for k = 1:divider:j
-     ax(1, i) = sum(aa(1, k:k+(divider - 1))) / divider;
-     ax(2, i) = sum(aa(2, k:k+(divider - 1))) / divider;
-     i = i + 1;
+     ax(1, i) = sum(aa(1, k:k+(divider)) / 5
+     ax(2, i) = sum(aa(2, k:k+4)) / 5
+     i = i + 1
  end
- 
- plot(ax(1:100));
