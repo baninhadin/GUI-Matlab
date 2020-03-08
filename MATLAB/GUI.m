@@ -22,7 +22,7 @@ function varargout = GUI(varargin)
 
 % Edit the above text to modify the response to help GUI
 
-% Last Modified by GUIDE v2.5 09-Mar-2020 01:49:35
+% Last Modified by GUIDE v2.5 09-Mar-2020 03:17:52
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -103,13 +103,27 @@ function pushbutton4_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
  load('E:\Berkas Banin\KULIAH\PSD\GUI-Matlab\MATLAB\0505\data_filter.mat');
  dividertxt = get(handles.edit1, 'String');
- divider = str2num(dividertxt);
- i = 1;
- j = size(aa, 2) - (divider - 1);
- for k = 1:divider:j
-     ax(1, i) = sum(aa(1, k:k+(divider - 1))) / divider;
-     ax(2, i) = sum(aa(2, k:k+(divider - 1))) / divider;
-     i = i + 1;
- end
+ divider = str2double(dividertxt);
  
- plot(ax(1:100));
+ if isempty(dividertxt)
+     f = warndlg("Input Kosong");
+ elseif isempty(divider) || mod(divider, 1) ~= 0
+     f = warndlg("Masukkan Input Bilangan Bulat");
+ elseif divider <= 0
+     f = warndlg("Masukkan Input Yang Lebih Dari 0");
+ elseif divider > 100
+     f = warndlg("Masukkan Input Yang Kurang Dari 101");
+ else
+    i = 1;
+    j = size(aa, 2) - (divider - 1);
+    for k = 1:divider:j
+        ax(1, i) = sum(aa(1, k:k+(divider - 1))) / divider;
+        ax(2, i) = sum(aa(2, k:k+(divider - 1))) / divider;
+        i = i + 1;  
+    end
+    SD = std(ax(:));
+    MEAN = mean(ax(:));
+    set(handles.text_hasil_sd, 'String', num2str(SD));
+    set(handles.text_hasil_mean, 'String', num2str(MEAN));
+    plot(ax(1:120));
+ end
