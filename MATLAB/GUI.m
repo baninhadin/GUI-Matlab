@@ -127,3 +127,4 @@ function pushbutton4_Callback(hObject, eventdata, handles)
     set(handles.text_hasil_mean, 'String', num2str(MEAN));
     plot(ax(1:120));
  end
+    
